@@ -29,4 +29,5 @@ navbar:
   output:
   html_document:
   theme: readable
-  higlight: textmate 
+  higlight: textmate
+  

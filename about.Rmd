@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "CV"
 author: "A.laldin"
 date: "9 April 2019"
 output: html_document
@@ -9,22 +9,96 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Asif LalDin
+Email:laldin.asif@gmail.com 
+Profile   
+A biologist with a background in population genetics, invasion biology and phylogenetics. Currently acquiring programming and statistical techniques to expand computation skills to transition in to Bioinformatics.   
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Education
+	Kingston University, London, UK. MScR Studentship Molecular Biology, 2014-2016
+•	Awarded funding by Zoological Society London 
+•	Thesis title: ‘The development and application of molecular tools to differentiate species of Dreissena’ 
+•	Conducted first detailed molecular genetic survey of species in Thames
+•	Completed comprehensive phylogenetic analysis of Dreissena
+•	Identified novel molecular markers that could identify instances of hybridization through the creation of a diagnostic multiplex PCR
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+	University of Gloucestershire, Cheltenham, UK.  BSc (Hons) Biology, 2011-2014 
+•	Dissertation Project: ‘Investigation of DNA methylation patterns in Avian Immune Gene B-lec’
 
-```{r cars}
-summary(cars)
-```
+Wet Lab Skills
+ 
+•	CoBRA
+•	Nucleic Acid Extraction
+•	cDNA Synthesis
+•	PCR
+•	qPCR 
+ 
+•	Medical Cell Microscopy 
+•	Bacterial Culture 
+•	Serological Testing 
+•	Haematological Analysis
 
-## Including Plots
+ 
 
-You can also embed plots, for example:
+ 
+Computational Skills
+ 
+•	Haplotype Analysis (PopART,R) 
+•	Statistical Population Genetics 
+•	Molecular Marker Development 
+•	Multiplex PCR Design  
+•	Sequence Data Analysis
+•	Molecular Phylogenetics
+•	Genetic Data Mining (ape, seqinR)
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+•	Data Cleaning (tidyr,dplyr,reshape) 
+•	 Data Visualisation (ggplot2, plotly, ggcorplot, matplotlib)
+•	 Regression Modelling (moderndive,sklearn, tidyverse)
+•	Sports Analytics (Cricket, Football, CSGO)
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+ 
+
+Relevant Employment History
+	Freelance Analyst (Kernaid College, Kunhar Christian Hospital, Akash Christian Society) 2018-
+•	Medical Microscopy 
+•	Medical Haematological Testing  
+•	Planning the creation of a PCR Lab, developing a budget as well as looking at design and construction ideas for the lab.  
+•	Published a Biosafety report to improve worker safety, contamination reduction and increased sensitivity and accuracy of tests. 
+•	Improvement of pharmacy till system, stock and inventory control
+•	Developed and improved patient data collection systems 
+•	Sorting, analysing and visualising past 5 years of financial and patient data
+•	Statistical analyses and data visualisation on male infertility studies.  
+
+	Senior Consultant, iConsultants, Lahore 2017
+•	Providing 1 to 1 mentoring and coaching to students
+•	Assisting students in formation of CVs, Covering letters and Research proposals
+•	Developing SOPs for the emerging business 
+
+
+	Research Assistant, University of Gloucestershire, May 2016-November
+•	The EDG funded project was in collaboration with Oxford University & Cambridge University, entitled ‘Host Response to Puffinosis’ 
+•	Investigating Avian host immune response to pathogens using qPCR
+•	Developing   an assay to detect cytokine up-regulation 
+•	Laboratory Budget and Stock Management 
+
+Conference Presentations
+	Interdisciplinary Hub for the Study of Health and Age-related conditions, Kingston University, 2015 
+•	Poster presentation: ‘Dreissena Public Health Threat in London Waterways’ 
+	International Molluscan Forum, Natural History Museum, London, 2015 
+•	Poster Presentation: ‘Using DNA to differentiate and Identify Dubious Species within the freshwater mussel Dreissena genus in Greater London Waters’
+
+Non- Technical Jobs
+	Assistant Manager, AquaVitae (Cocktail Bar), Cheltenham,2016
+•	Managing stock, payroll and financial matters
+•	Oversaw design and creation of cocktails and a new menu
+•	Overseeing Purchase orders 
+•	Staff recruitment and management 
+
+	Tutor, StudyBuddy UK, 2015
+•	Tutor in Biology, English and Maths for secondary school students
+
+	Residential Assistant, University of Gloucestershire, 2013
+•	Providing pastoral care and first line of communication between student residents in university accommodation and management in return for reduced accommodation fees
+
+
+
