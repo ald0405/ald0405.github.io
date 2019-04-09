@@ -1,0 +1,187 @@
+---
+title: "About"
+author: "A.laldin"
+date: "9 April 2019"
+output: html_document
+    
+  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+## [Introduction and Preface](sheading-2)
+
+For all of DnaSP's wonderful functionality its visualisations leave much to be desired. You may be tempted to use MS Excel. While Excel is effective for many tasks it is limited in its functionality. Last time I checked, Excel cannot handle more than 239 data points when creating a scatter-plot and secondly, moving data from DnaSP's.out format into Excel is tedious at best. However, this can be circumvented in a few short steps with a little bit of code.
+
+This tutorial is targeted towards biologists/ecologists/population geneticists who have a very basic understanding of R but a strong background in population genetics,( otherwise I don't know why you'd be calculating pairwise mismatch distributions;) ).
+
+If you already have an idea of what you are doing, feel free to download the R script from here and use it. If you need a little bit of additional help and a walk through of the required steps. Keep reading.
+
+Provided that you already have your data generated from DnaSP you will undertake 
+
+
+### [Four Steps:](sheading-2)
+
+
+1.  Reading the .out file into R
+2.  Cleaning and formatting the data
+3.  Plotting the results to publication quality level
+4.  Having a congratulatory beer (Optional)
+
+#### [Functions Used:](sheading-2)
+
+We will use :
+
+
+1.  One base R function to read in the data
+2.  One tidyr function to clean data (Step 2 will not be used in the method #1)
+3.  Two ggplot2 functions to plot data and save the resulting plot
+
+## [Method 1](sheading-2)
+
+
+#### [Libraries Used](sheading-2) 
+```{r Library,warning=FALSE}
+library(tidyr)   # For tidying data
+library(ggplot2) # For plotting data
+library(bbplot) # For plot layout 
+library(ggthemes) # Applying theme 
+```
+###Note Regarding Setting Working Directory 
+Generally speaking, it is best not to use the `setwd("C:/Me/Myfiles")` to alter the working directory. It is better to  target the read function directly to the location of the file as will be seen below.
+ 
+
+### [Read in file from DnaSP](sheading-2)
+Arguments *skip* and *col.names* have been used to
+
+
+1.  Skip unnecessary data located in file
+2.  Clean Messy Column Names
+
+```{r Data}
+
+MM <- read.table("C:/Users/the_siff/Desktop/RR/DataScience/new.out",
+  skip = 43,
+  col.names = c("Differences", "FreqObs", "FreqExp")
+)
+```
+Above you can see the first argument of the `read.table()` function is directed to the exact location where the file is stored. After that two optional arguments are used which are integral to the process of reading in this.out file:
+`Skip`, ensures the function does not read the data preceding the first 43 lines
+`col.names`, assigns a new set of column names via a character vector
+
+
+```{r Calling Head}
+head(MM)%>% knitr::kable()
+```
+
+
+We can call up the head of the data and see that the file has been read in correctly and the file names are just as we specified.
+
+
+### [ggplot2 fundementals](sheading-2) 
+
+If you are not familiar with `ggplot2` this may look a little complicated, but you will soon find that it really isn't. In a nutshell `ggplot2` plots (based on the grammar of graphics) are built in "layers", each time you see +, the proceeding code is an additional `"layer"`.
+
+
+We first call the data set in question __(MM)__, containing our mismatch data.
+then set the variables to appear on __X(Differences)__ and __Y(FreqObs)__ axis and define the type of `geom`(type of plot) we want. In this case a we want a line plot thus we use `geom_line()`. The linetype arguments alters the type of line produced on the plot. Have a play with values 1-5 and see what you get(Value 1 is the default, i.e. if you left that argument blank it would automatically choose 1).
+
+
+As we are viewing two lines, observed and expected frequency values, an additional `geom_line()` with another `Y(FreqExp)`call is used to plot the variable not used in the first call. Here the col argument allows you to change the colour of the line by naming the colour or using a hex colour code(this argument can also be applied to the `geom_line()`. Here is a great site for selecting colour codes and palettes.
+After that we have two more layers:
+The theme is personal preference and
+the labs function adds labels to the plots.
+
+### [Plotting Method1](sheading-2)
+```{r, Plotting 1,warning=FALSE}
+ggplot(MM, aes(
+  x = Differences, 
+  y = FreqObs)) +
+  geom_line(linetype = 1) +
+  geom_line(aes(y = FreqExp), col="red")+
+  labs(
+    subtitle = "Species X",
+    title = " DNA Mismatch Distribution ",
+    caption = "Using Publically Available Data",
+    x = "Differences",
+    y = "Frequency Observed")+
+  theme_fivethirtyeight() 
+  
+```
+
+
+
+
+### [Saving Plot Using `ggsave`](sheading-2)
+
+
+```{r}
+ggsave(
+  filename = "C:/Users/the_siff/Desktop/RR/DataScience/MyMM1.jpeg",
+  dpi = 600, type = "cairo",
+  height = 2.71,
+  width  = 2.32,
+  units = "in"
+)
+```
+
+
+A ggsave call will save the most recently produced ggplot2 plot within your R console(use it carefully). The type argument is useful if you are using R on windows due to anti-aliasing issues, which result in very jagged lined plots. The dimensions arguments are optional and can be left blank/default. 
+
+## [Method 2](sheading-2)
+
+### [Formatting Data into the correct TIDY format](sheading-2)
+
+
+
+ __Frequency__ column will take both sets of frequency calls and __type__
+ will contain expected and observed values
+```{r Clean Data}
+TidyMM <- gather(MM,
+  value = "Frequency",
+  key = "Type",
+  FreqObs, FreqExp
+)
+```
+The gather function is native to tidyr, a component of the tidyverse family. Frequency column will take both sets of frequency calls and type
+will contain FreqExp and FreqObs values.
+
+
+### [Comparing Formats](sheading-2)
+```{r}
+head(MM)%>% knitr::kable()     # Original
+head(TidyMM) %>% knitr::kable() # Altered head
+tail(TidyMM) %>% knitr::kable() # Altered tail
+```
+
+### [Plotting Method 2](sheading-2)
+```{r Plotting Data 2,warning=FALSE}
+ggplot(TidyMM, aes(
+  x = Differences, 
+  y = Frequency, 
+  linetype = Type)) +
+  geom_line(show.legend = FALSE) +
+  theme_minimal() +
+  labs(
+    subtitle = "Species X",
+    title = " DNA Mismatch Distribution ",
+    caption = "Using Publically Available Data",
+    x = "Differences",
+    y = "Frequency Observed")+
+  theme_fivethirtyeight()
+```
+
+### [Saving Plot Using `ggsave`](sheading-2)
+
+
+```{r}
+ggsave(
+  filename = "C:/Users/the_siff/Desktop/RR/DataScience/MyMM2.jpeg",
+  dpi = 600, type = "cairo",
+  height = 2.71,
+  width  = 2.32,
+  units = "in"
+)
+```
