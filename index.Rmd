@@ -1,13 +1,8 @@
 ---
-title: "Home"
-author: "A.laldin"
-date: "9 April 2019"
-output: html_document
+title: "My Homepage"
+
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 ## R Markdown
 
